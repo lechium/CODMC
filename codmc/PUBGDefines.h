@@ -36,6 +36,9 @@ static NSString * const PGBActionTypeStartButton = @"PGBActionTypeStartButton";
 static NSString * const PGBActionTypePeakLeft = @"PGBActionTypePeakLeft";
 static NSString * const PGBActionTypePeakRight = @"PGBActionTypePeakRight";
 
+static NSString * const PGBActionTypeAirOne = @"PGBActionTypeAirOne";
+static NSString * const PGBActionTypeAirTwo = @"PGBActionTypeAirTwo";
+static NSString * const PGBActionTypeAirThree = @"PGBActionTypeAirThree";
 
 static NSString * const LeftThumbstick = @"LeftThumbstick";
 static NSString * const RightThumbstick = @"RightThumbstick";
@@ -87,6 +90,9 @@ typedef enum {
     kPGBActionTypeStartButton,
     kPGBActionTypePeakLeft,
     kPGBActionTypePeakRight,
+    kPGBActionTypeAirOne,
+    kPGBActionTypeAirTwo,
+    kPGBActionTypeAirThree,
     kPGBActionTypeUndefined,
     
 } PGBActionType;

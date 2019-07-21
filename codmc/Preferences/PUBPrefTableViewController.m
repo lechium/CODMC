@@ -20,8 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
-      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(close)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(close)];
 }
 
 - (void)close {
@@ -33,14 +33,10 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    if (section == 0){
-        return  2;
-    }
     
     return 14;
 }
@@ -50,41 +46,12 @@
     PUBGControllerManager *shared = [PUBGControllerManager sharedManager];
     NSDictionary *gpd = [shared controllerPreferences];
     
-    
-    if (indexPath.section == 0){
-
-        switch (indexPath.row) {
-            case 0:
-                {
-                    BOOL enabled = [gpd[InvertedControl] boolValue];
-                    [shared updateGamplayValue:[NSNumber numberWithBool:!enabled] forKey:InvertedControl];
-                }
-                break;
-            case 1:
-                {
-                    PUBCPanSpeedViewController *controller = [PUBCPanSpeedViewController new];
-                    [self.navigationController pushViewController:controller animated:true];
-                }
-                break;
-                
-            default:
-                break;
-        }
-
-        [[self tableView] reloadData];
-        
-    } else {
-        NSString *key = [self keyForRow:indexPath.row];
-        NSLog(@"key: %@", key);
-        NSString *value = gpd[key];
-         NSLog(@"value: %@", value);
-        PUBControlListTableViewController *controller = [[PUBControlListTableViewController alloc] initWithOriginalValue:value keyValue:key];
-        [self.navigationController pushViewController:controller animated:true];
-        
-    }
-        
-        
-    
+    NSString *key = [self keyForRow:indexPath.row];
+    NSLog(@"key: %@", key);
+    NSString *value = gpd[key];
+    NSLog(@"value: %@", value);
+    PUBControlListTableViewController *controller = [[PUBControlListTableViewController alloc] initWithOriginalValue:value keyValue:key];
+    [self.navigationController pushViewController:controller animated:true];
 }
 
 - (NSString *)keyForRow:(NSInteger)row {
@@ -167,7 +134,7 @@
     return keyValue;
 }
 - (void)configureCell:(UITableViewCell *)cell forRow:(NSInteger)row {
- 
+    
     NSDictionary *gpd = [[PUBGControllerManager sharedManager] controllerPreferences];
     //NSLog(@"controllerPreferences: %@", gpd);
     
@@ -261,7 +228,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
- 
+    
     [super viewWillAppear:animated];
     
     [self.tableView reloadData];
@@ -278,32 +245,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
-    NSDictionary *prefs = [[PUBGControllerManager sharedManager] controllerPreferences];
-    BOOL exp = [prefs[InvertedControl] boolValue];
-    float joystickSpeed = [prefs[PanningSpeed] floatValue];
-    NSString *value = @"Enabled";
-    if (!exp)
-        value = @"Disabled";
-    switch (indexPath.section){
-            
-        case 0: //
-            
-            if (indexPath.row == 0){
-                cell.textLabel.text = @"Inverted Right Joystick";
-                cell.detailTextLabel.text = value;
-            } else { //row 1
-                cell.textLabel.text = @"Right Joystick Speed";
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f", joystickSpeed];
-            }
-            break;
-            
-        case 1: //
-            
-            [self configureCell:cell forRow:indexPath.row];
-            
-            break;
-    }
-    
+    //NSDictionary *prefs = [[PUBGControllerManager sharedManager] controllerPreferences];
+    [self configureCell:cell forRow:indexPath.row];
+
     return cell;
 }
 

@@ -25,8 +25,10 @@
 
 - (NSArray *)availableOptions {
  
-    return @[@"PGBActionTypeLeft",@"PGBActionTypeRight",@"PGBActionTypeRun",@"PGBActionTypeCrouch",@"PGBActionTypeConceal",@"PGBActionTypeJump",@"PGBActionTypeFirstWeapon",@"PGBActionTypeSecondWeapon",@"PGBActionTypeSmallWeapon",@"PGBActionTypeAim",@"PGBActionTypeReload",@"PGBActionTypeExitRound",@"PGBActionTypeInventory",@"PGBActionHandAction",@"PGBActionFirstItemSelect",@"PGBActionMapAction",@"PGBActionTypePeakLeft",@"PGBActionTypePeakRight"];
-}
+    return @[PGBActionTypeLeft,PGBActionTypeRight,PGBActionTypeRun,PGBActionTypeCrouch,PGBActionTypeConceal,PGBActionTypeJump,PGBActionTypeFirstWeapon,PGBActionTypeSecondWeapon,PGBActionTypeAim,PGBActionTypeReload,PGBActionFirstItemSelect,PGBActionTypeAirOne, PGBActionTypeAirTwo, PGBActionTypeAirThree];
+    /*@[@"PGBActionTypeLeft",@"PGBActionTypeRight",@"PGBActionTypeRun",@"PGBActionTypeCrouch",@"PGBActionTypeConceal",@"PGBActionTypeJump",@"PGBActionTypeFirstWeapon",@"PGBActionTypeSecondWeapon",@"PGBActionTypeSmallWeapon",@"PGBActionTypeAim",@"PGBActionTypeReload",@"PGBActionTypeExitRound",@"PGBActionTypeInventory",@"PGBActionHandAction",@"PGBActionFirstItemSelect",@"PGBActionMapAction",@"PGBActionTypePeakLeft",@"PGBActionTypePeakRight"];
+*/
+     }
 
 - (id)initWithOriginalValue:(id)value keyValue:(NSString *)kv {
  

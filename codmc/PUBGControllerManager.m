@@ -629,6 +629,7 @@
                     
                         if (verticalDir != 0){
                             newPoint.y = yv;
+                            secondPoint.y = yv;
                         }
                         NSLog(@"CODMC: moving from %@ to %@", NSStringFromCGPoint(self_weak_.previousRightPoint), NSStringFromCGPoint(newPoint));
                         for (UITouch *updatedTouch in self.rightTouches){
@@ -652,7 +653,7 @@
                                 [updatedTouch setPhaseAndUpdateTimestamp:UITouchPhaseMoved];
                                 [newTouches addObject:updatedTouch];
                             }
-                            /*
+                        
                             UIEvent *event2 = [self.IOSView eventWithTouches:[NSArray arrayWithArray:newTouches]];
                             [[UIApplication sharedApplication] sendEvent:event2];
                             [[self rightTouches] removeAllObjects]; //remove old touches
@@ -663,7 +664,7 @@
                             }
                         
                             newPoint = secondPoint;
-                             */
+                        
                        // }
                         
                         
@@ -1028,6 +1029,12 @@
         type = kPGBActionTypePeakLeft;
     }  else if ([constant isEqualToString:PGBActionTypePeakRight]){
         type = kPGBActionTypePeakRight;
+    } else if ([constant isEqualToString:PGBActionTypeAirOne]){
+        type = kPGBActionTypeAirOne;
+    } else if ([constant isEqualToString:PGBActionTypeAirTwo]){
+        type = kPGBActionTypeAirTwo;
+    } else if ([constant isEqualToString:PGBActionTypeAirThree]){
+        type = kPGBActionTypeAirThree;
     }
     return type;
     
@@ -1137,23 +1144,7 @@
             outpoint = CGPointMake(64,13);
             break;
             
-            
-            /*
-             
-             (72x196) = left action
-             (76x341) = inventory
-             (374x343) = left weapon
-             (354x343) = right weapon
-             (530x352) = throwable weapon?
-             (627x355) = reload
-             (678x349) = crouch
-             (730x352) = conceal
-             (684x283) = right action
-             (756x257) = jump
-             (754x197) = aim
-             (668x94) = run
-             
-             */
+
         case kPGBActionTypeInventory:
             outpoint =  CGPointMake(76,341);
             break;
@@ -1311,7 +1302,7 @@
  */
 
 - (CGPoint)pointForActionType:(PGBActionType)type {
-    
+    /*
     NSArray *ipad97 = @[@"iPad6,3",@"iPad6,4"];
     if ([ipad97 containsObject:[self machine]]){
         
@@ -1322,27 +1313,8 @@
         
         return [self pointForActionTypeOnX:type];
     }
-    
-    /*
-     
-     rightaction
-     reload
-     crouch
-     jump
-     aim
-     run
-     weaponOne
-     weaponTwo
-     airOne(193,333)
-     airTwo(230,333)
-     airThree(266,333)
-     
+    */
 
-     
-     pickUp
-     
-     
-     */
     
     CGPoint outpoint = CGPointZero;
     
@@ -1372,27 +1344,27 @@
             break;
             
         case kPGBActionTypeTrainingButton:
-            outpoint = [self convertPointForScreen:CGPointMake(28, 140)];
+            outpoint = CGPointZero;
             break;
             
         case kPGBActionTypeOKCancelButton:    //Cancel button (on ok/cancel alert)
-            outpoint = [self convertPointForScreen:CGPointMake(281,266)];
+            outpoint = CGPointZero;
             break;
             
         case kPGBActionTypeXCloseButton:  //top right close x
-            outpoint = [self convertPointForScreen:CGPointMake(610,72)];
+            outpoint = CGPointZero;
             break;
             
         case kPGBActionTypeStartButton:
-            outpoint = [self convertPointForScreen:CGPointMake(81, 32)];
+            outpoint = CGPointZero;
             break;
             
         case kPGBActionTypeOKDualButton: //(point for OK on Cancel / OK alert)
-            outpoint = [self convertPointForScreen:CGPointMake(388,266)];
+            outpoint = CGPointZero;
             break;
             
         case kPGBActionTypeXClose2Button: //lower close X
-            outpoint = [self convertPointForScreen:CGPointMake(627,31)];
+            outpoint = CGPointZero;
             break;
             
         case kPGBActionTypeRight:
@@ -1400,7 +1372,7 @@
             break;
             
         case kPGBActionTypeLeft:
-            outpoint = [self convertPointForScreen:CGPointMake(39, 198)];
+            outpoint = [self convertPointForScreen:CGPointMake(38, 189)];
             break;
             
         case kPGBActionTypeJump:
@@ -1411,19 +1383,31 @@
             outpoint = [self convertPointForScreen:CGPointMake(566,332)];
             break;
         case kPGBActionTypeSmallWeapon:
-            outpoint = [self convertPointForScreen:CGPointMake(406,313)];
+            outpoint = CGPointZero;
+            break;
+            
+        case kPGBActionTypeAirOne:
+            outpoint = [self convertPointForScreen:CGPointMake(193,333)];
+            break;
+            
+        case kPGBActionTypeAirTwo:
+            outpoint = [self convertPointForScreen:CGPointMake(230,333)];
+            break;
+            
+        case kPGBActionTypeAirThree:
+            outpoint = [self convertPointForScreen:CGPointMake(266,333)];
             break;
             
         case kPGBActionTypeExitRound:
-            outpoint = [self convertPointForScreen:CGPointMake(64,13)];
+            outpoint = CGPointZero;
             break;
             
         case kPGBActionTypeInventory:
-            outpoint =  [self convertPointForScreen:CGPointMake(48, 343)];
+            outpoint =  CGPointZero;
             break;
             
         case kPGBActionHandAction:
-            outpoint = [self convertPointForScreen:CGPointMake(480,95)];
+            outpoint = CGPointZero;
             break;
             
         case kPGBActionFirstItemSelect:
@@ -1431,15 +1415,15 @@
             break;
             
         case kPGBActionTypeOKSoloButton:
-            outpoint = [self convertPointForScreen:CGPointMake(330,266)];
+            outpoint = CGPointZero;
             break;
             
         case kPGBActionTypePeakLeft:
-            outpoint = [self convertPointForScreen:CGPointMake(91,139)];
+            outpoint = CGPointZero;
             break;
             
         case kPGBActionTypePeakRight:
-            outpoint = [self convertPointForScreen:CGPointMake(144,139)];
+            outpoint = CGPointZero;
             break;
             
         default:
