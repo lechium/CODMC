@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PREF="/var/mobile/Library/Preferences/com.nito.codmc.plist"
+
+if [ ! -f $PREF ] ; then
+
+     /bin/mv $PREF.og $PREF
+     /bin/chown mobile:mobile $PREF
+fi
+

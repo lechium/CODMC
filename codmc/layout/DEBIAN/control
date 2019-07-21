@@ -1,0 +1,9 @@
+Package: com.nito.codmc
+Name: codmc
+Version: 1.1
+Architecture: iphoneos-arm
+Description: Add MFI controller support to Call Of Duty mobile.
+Maintainer: Kevin Bradley
+Author: Kevin Bradley
+Section: Tweaks
+Depiction: https://wiki.awkwardtv.org/wiki/Codmc
