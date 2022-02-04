@@ -1,7 +1,8 @@
+export PREFIX = $(THEOS)/toolchain/XcodeDefault.xctoolchain/usr/bin/
 ARCHS = arm64e armv7 armv7s arm64
 TARGET = iphone
 export GO_EASY_ON_ME=1
-export SDKVERSION=12.1
+#export SDKVERSION=12.1
 THEOS_DEVICE_IP=192.168.0.8
 DEBUG=0
 
@@ -15,7 +16,7 @@ CODMC_FILES += RKDropdownAlert/RKDropdownAlert.m
 CODMC_FILES += extobjc/EXTRuntimeExtensions.m extobjc/EXTScope.m 
 CODMC_LIBRARIES = substrate
 CODMC_FRAMEWORKS = Foundation IOKit GameController
-CODMC_CFLAGS += -I.-IRKDropdownAlert -Iextobjc -IPureLayout -IKIF -IPreferences -ICategories -fobjc-arc -miphoneos-version-min=9.0
+CODMC_CFLAGS += -I. -IRKDropdownAlert -Iextobjc -IPureLayout -IKIF -IPreferences -ICategories -fobjc-arc -miphoneos-version-min=9.0
 CODMC_LDFLAGS = -miphoneos-version-min=9.0 -undefined dynamic_lookup
 #CODMC_CODESIGN_FLAGS=-Slibrespring.xml
 
